@@ -20,6 +20,13 @@ Rewrite the filenames with something like this in your .htaccess:
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)\.(\d+)\.(js|css|png|ico|svg|jpe?g|gif)$ $1.$3 [L]
 
+Or if you're using nginx:
+
+		location / {
+  			rewrite ^(.*)\.[0-9]+\.(css|js|jpg|jpeg|png|gif)$ $1.$2 break;
+    		...
+  	}
+
 If you want a simpler alternative that doesn't need url rewriting, check out [Bust](https://github.com/davist11/craft-bust/)
 by Trevor Davis. But, beware that assets with query strings [may not be cached properly by proxies](http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/).
 
