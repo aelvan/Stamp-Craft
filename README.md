@@ -1,4 +1,4 @@
-Stamp for Craft
+Stamp for Craft 3
 ===========
 
 A tiny plugin for adding timestamp to filenames. 
@@ -83,8 +83,4 @@ path. You can configure the path by setting the stampPublicRoot setting in your 
 
 Changelog
 ---
-### Version 1.1
- - Added additional parameter to output filepaths in different formats
- 
-### Version 1.0
- - Initial release
+See [releases.json](https://raw.githubusercontent.com/aelvan/Inlin-Craft/craft3/releases.json).

@@ -1,0 +1,14 @@
+{
+    "name": "Stamp",
+    "version": "2.0.0",
+    "schemaVersion": "1.0.0",
+    "developer": "André Elvan",
+    "developerUrl": "http://vaersaagod.no",
+    "description": "A tiny plugin for adding timestamp to filenames.",
+    "documentationUrl": "https://github.com/aelvan/Stamp-Craft/blob/craft3/README.md",
+    "releaseFeedUrl": "https://raw.githubusercontent.com/aelvan/Stamp-Craft/craft3/releases.json",
+    "class": "craft\\plugins\\stamp\\Stamp",
+    "components": {
+        "stamp": "craft\\plugins\\stamp\\services\\StampService"
+    }
+}
