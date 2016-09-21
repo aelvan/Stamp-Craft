@@ -15,8 +15,8 @@ class StampVariable
     public function er($fileName, $mode = 'file')
     {
         $documentRoot = Stamp::$plugin->stamp->getSetting('stampPublicRoot') != null ? Stamp::$plugin->stamp->getSetting('stampPublicRoot') : $_SERVER['DOCUMENT_ROOT'];
-        $filePath = $documentRoot . $fileName;
-
+        $filePath = $this->_removeDoubleSlashes($documentRoot . '/' . $fileName);
+        
         if ($fileName != '' && file_exists($filePath)) {
             $path_parts = pathinfo($fileName);
 
@@ -35,5 +35,16 @@ class StampVariable
         }
             
         return '';
+    }
+    
+     /**
+     * Removes double slashes from string
+     * 
+     * @param $path
+     * @return mixed
+     */
+    private function _removeDoubleSlashes($path)
+    {
+        return preg_replace('#/+#','/',$path);
     }
 }
