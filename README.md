@@ -1,8 +1,26 @@
-Stamp for Craft 3
+Stamp for Craft
 ===========
-
 A tiny plugin for adding timestamp to filenames. 
 
+*This is the Craft 3.x version of Stamp, for the Craft 2.x version see the [master branch](https://github.com/aelvan/Stamp-Craft/tree/master).*
+
+Requirements
+---
+This plugin requires Craft CMS 3.0.0-beta.23 or later.
+
+Installation
+---
+To install the plugin, follow these instructions.
+
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+
+        composer require aelvan/stamp
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Stamp.
 
 Usage
 ---
@@ -72,15 +90,14 @@ nginx:
 Configuration
 ---
 Stamp needs to know the public document root to know where your files are located. By default
-Stamp will use $_SERVER['DOCUMENT_ROOT'], but on some server configurations this is not the correct 
-path. You can configure the path by setting the stampPublicRoot setting in your config file 
-(usually found in /craft/config/general.php)
- 
-####Example
+Stamp will use `$_SERVER['DOCUMENT_ROOT']`, but on some server configurations this is not the correct
+path. You can configure the path by creating a config file called `stamp.php` in your config folder, 
+and adding the `publicRoot` setting.
 
-    'stampPublicRoot' => '/path/to/website/public/',
+#### Example
 
+    'publicRoot' => '/path/to/website/public/',
 
 Changelog
 ---
-See [releases.json](https://raw.githubusercontent.com/aelvan/Inlin-Craft/craft3/releases.json).
+See [CHANGELOG.md](https://raw.githubusercontent.com/aelvan/Stamp-Craft/craft3/CHANGELOG.md).
