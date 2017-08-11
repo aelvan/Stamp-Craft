@@ -3,6 +3,7 @@ Stamp for Craft
 
 A tiny plugin for adding timestamp to filenames. 
 
+*This is the Craft 2.x version of Stamp, for the Craft 3.x version see the [craft3 branch](https://github.com/aelvan/Stamp-Craft/tree/craft3).*
 
 Usage
 ---
