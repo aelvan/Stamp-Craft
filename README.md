@@ -100,4 +100,4 @@ and adding the `publicRoot` setting.
 
 Changelog
 ---
-See [CHANGELOG.md](https://raw.githubusercontent.com/aelvan/Stamp-Craft/craft3/CHANGELOG.md).
+See [CHANGELOG.md](https://github.com/aelvan/Stamp-Craft/blob/craft3/CHANGELOG.md).
