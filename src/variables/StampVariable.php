@@ -45,7 +45,7 @@ class StampVariable
                 return $path_parts['dirname'] . '/' . $path_parts['filename'] . '.' . $path_parts['extension'] . '?ts=' . $stamp;
             }
 
-            if ($mode === 'tsonly') {
+            if ($mode === 'tsonly' || $mode === 'only') {
                 return $stamp;
             }
         }
