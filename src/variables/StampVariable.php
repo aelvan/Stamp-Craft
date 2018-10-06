@@ -24,7 +24,7 @@ class StampVariable
      */
     public function er($fileName, $mode = 'file'): string
     {
-        $documentRoot = Stamp::getInstance()->getSettings()->publicRoot ?? $_SERVER['DOCUMENT_ROOT'];
+        $documentRoot = \Yii::getAlias(Stamp::getInstance()->getSettings()->publicRoot ?? '@webroot');
         $filePath = $this->_removeDoubleSlashes($documentRoot.'/'.$fileName);
 
         if ($fileName !== '' && file_exists($filePath)) {
