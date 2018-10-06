@@ -6,7 +6,7 @@ A tiny plugin for adding timestamp to filenames.
 
 Requirements
 ---
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0 or later.
 
 Installation
 ---
@@ -50,14 +50,29 @@ Result:
 
     <script src="/assets/build/js/scripts.js?ts=1399647655"></script>
 
-Example with `tsonly`:
+Example with `only`:
 
-    Timestamp is: {{ craft.stamp.er('/assets/build/js/scripts.js', 'tsonly') }} 
+    Timestamp is: {{ craft.stamp.er('/assets/build/js/scripts.js', 'only') }} 
 
 Result:
 
     Timestamp is: 1399647655
 
+
+Hashing option
+---
+
+The `craft.stamp.er()` method takes a third parameter for setting the algorithm of the output. Possible values are `ts` (default), and `hash`.
+
+`ts` stands for timestamp and behaves as shown above. `hash` gets the CRC32 checksum of the file instead of the timestamp. It's useful for cases when you need your cache busting to be fully deterministic.
+
+For example:
+
+    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js', 'file', 'hash') }}"></script>
+
+Result:
+
+    <script src="/assets/build/js/scripts.2031312059.js"></script>
 
 
 URL rewriting
@@ -90,7 +105,7 @@ nginx:
 Configuration
 ---
 Stamp needs to know the public document root to know where your files are located. By default
-Stamp will use `$_SERVER['DOCUMENT_ROOT']`, but on some server configurations this is not the correct
+Stamp will use `@webroot`, but on some server configurations this is not the correct
 path. You can configure the path by creating a config file called `stamp.php` in your config folder, 
 and adding the `publicRoot` setting.
 
