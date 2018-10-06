@@ -1,15 +1,15 @@
 Stamp for Craft
 ===========
 
-A tiny plugin for adding timestamp to filenames. 
+A tiny plugin for adding timestamp to filenames.
 
 *This is the Craft 2.x version of Stamp, for the Craft 3.x version see the [craft3 branch](https://github.com/aelvan/Stamp-Craft/tree/craft3).*
 
 Usage
 ---
 Use it like this:
- 
-    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js') }}"></script> 
+
+    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js') }}"></script>
 
 Which results in:
 
@@ -19,7 +19,7 @@ The er() method takes a second parameter for setting the format of the output. P
 
 Example with `folder`:
 
-    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js', 'folder') }}"></script> 
+    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js', 'folder') }}"></script>
 
 Result:
 
@@ -27,7 +27,7 @@ Result:
 
 Example with `query`:
 
-    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js', 'query') }}"></script> 
+    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js', 'query') }}"></script>
 
 Result:
 
@@ -35,13 +35,28 @@ Result:
 
 Example with `tsonly`:
 
-    Timestamp is: {{ craft.stamp.er('/assets/build/js/scripts.js', 'tsonly') }} 
+    Timestamp is: {{ craft.stamp.er('/assets/build/js/scripts.js', 'tsonly') }}
 
 Result:
 
     Timestamp is: 1399647655
 
 
+### Hashing option
+
+The er() method takes a third parameter for setting the algorithm of the output. Possible values are `ts` (default), and `hash`.
+
+`ts` stands for timestamp and behaves as shown above. `hash` gets the CRC32 checksum of the file instead of the timestamp. It's useful for cases when you need your cache busting to be fully deterministic.
+
+For example:
+
+    <script src="{{ craft.stamp.er('/assets/build/js/scripts.js', 'file', 'hash') }}"></script>
+
+Result:
+
+    <script src="/assets/build/js/scripts.2031312059.js"></script>
+
+Note: For the sake of consistency, calling `er('file', 'tsonly', 'hash')` will return just the hash, despite the fact that `tsonly` starts with `ts`.
 
 URL rewriting
 ---
@@ -60,7 +75,7 @@ nginx:
     location @assetversioning {
         rewrite ^(.+)\.[0-9]+\.(css|js)$ $1.$2 last;  # /assets/build/js/scripts.1399647655.js
         # rewrite ^(.+)/([0-9]+)/(.+)\.(js|css)$ $1/$3.$4 last;  # /assets/build/js/1399647655/scripts.js
-    }    
+    }
 
     location ~* ^/assets/.*\.(?:css|js)$ {
         try_files $uri @assetversioning;
@@ -73,10 +88,10 @@ nginx:
 Configuration
 ---
 Stamp needs to know the public document root to know where your files are located. By default
-Stamp will use $_SERVER['DOCUMENT_ROOT'], but on some server configurations this is not the correct 
-path. You can configure the path by setting the stampPublicRoot setting in your config file 
+Stamp will use $_SERVER['DOCUMENT_ROOT'], but on some server configurations this is not the correct
+path. You can configure the path by setting the stampPublicRoot setting in your config file
 (usually found in /craft/config/general.php)
- 
+
 ####Example
 
     'stampPublicRoot' => '/path/to/website/public/',
@@ -86,6 +101,6 @@ Changelog
 ---
 ### Version 1.1
  - Added additional parameter to output filepaths in different formats
- 
+
 ### Version 1.0
  - Initial release
