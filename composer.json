@@ -2,7 +2,7 @@
     "name": "aelvan/stamp",
     "description": "A simple plugin for adding timestamps to filenames.",
     "type": "craft-plugin",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -23,7 +23,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0"
+        "craftcms/cms": "^4.0.0"
     },
     "repositories": [
         {
@@ -39,7 +39,7 @@
     "extra": {
         "name": "Stamp",
         "handle": "stamp",
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "3.0.0",
         "hasCpSettings": false,
         "hasCpSection": false,
         "changelogUrl": "https://github.com/aelvan/Stamp-Craft/blob/craft3/CHANGELOG.md",

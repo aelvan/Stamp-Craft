@@ -1,6 +1,6 @@
 <?php
 /**
- * Stamp plugin for Craft CMS 3.x
+ * Stamp plugin for Craft CMS 4.x
  *
  * A simple plugin for adding timestamps to filenames.
  *
@@ -23,9 +23,10 @@ class StampVariable
      *
      * @return string
      */
-    public function er($fileName, $mode = 'file', $alg = 'ts'): string
+    public function er(string $fileName, string $mode = 'file', string $alg = 'ts'): string
     {
-        $documentRoot = \Yii::getAlias(Stamp::getInstance()->getSettings()->publicRoot ?? '@webroot');
+        $publicRoot = !empty(Stamp::getInstance()->getSettings()->publicRoot) ?: '@webroot';
+        $documentRoot = \Yii::getAlias($publicRoot);
         $filePath = $this->_removeDoubleSlashes($documentRoot . '/' . $fileName);
 
         if ($fileName !== '' && file_exists($filePath)) {
@@ -57,9 +58,9 @@ class StampVariable
      * Removes double slashes from string
      *
      * @param string $path
-     * @return mixed
+     * @return string
      */
-    private function _removeDoubleSlashes($path)
+    private function _removeDoubleSlashes(string $path): string
     {
         return preg_replace('#/+#', '/', $path);
     }
@@ -71,7 +72,7 @@ class StampVariable
      * @param string $filePath
      * @return string
      */
-    public function num_hash_file($filePath)
+    public function num_hash_file(string $filePath): string
     {
         return implode(unpack('C*', hash_file('crc32b', $filePath, true)));
     }
