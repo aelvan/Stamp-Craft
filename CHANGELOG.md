@@ -1,5 +1,9 @@
 # Stamp Changelog
 
+## 3.0.0 - 2022-11-13
+### Added
+- Initial Craft 4 release
+
 ## 2.1.0 - 2018-10-06
 ### Added
 - Stamp now uses `@webroot` alias instead of $_SERVER\['DOCUMENT_ROOT'\] as path root by default. 

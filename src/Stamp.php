@@ -1,6 +1,6 @@
 <?php
 /**
- * Stamp plugin for Craft CMS 3.x
+ * Stamp plugin for Craft CMS 4.x
  *
  * A simple plugin for adding timestamps to filenames.
  *
@@ -10,6 +10,7 @@
 
 namespace aelvan\stamp;
 
+use craft\base\Model;
 use craft\base\Plugin;
 use aelvan\stamp\variables\StampVariable;
 use craft\web\twig\variables\CraftVariable;
@@ -34,7 +35,7 @@ class Stamp extends Plugin
         });
     }
 
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new \aelvan\stamp\models\Settings();
     }

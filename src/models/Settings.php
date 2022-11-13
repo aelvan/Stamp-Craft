@@ -1,6 +1,6 @@
 <?php
 /**
- * Stamp plugin for Craft CMS 3.x
+ * Stamp plugin for Craft CMS 4.x
  *
  * A simple plugin for adding timestamps to filenames.
  *
@@ -14,5 +14,5 @@ use craft\base\Model;
 
 class Settings extends Model
 {
-    public $publicRoot = null;
+    public string $publicRoot = '';
 }
